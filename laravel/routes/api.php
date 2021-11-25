@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/dataguru', [DataGuruController::class, 'index']);
+Route::post('/dataguru', [DataGuruController::class, 'store']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataGuru;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class DataGuruController extends Controller
@@ -32,7 +33,34 @@ class DataGuruController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => ['required'],
+            'nisn' => ['required', 'numeric'],
+            'jeniskelamin' => ['required', 'in:L,P'],
+            'umur' => ['required', 'numeric'],
+            'status' => ['required', 'in:PNS,Honorer'],
+            'jabatan' => ['required'],
+            'mapel' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        try {
+            $dataGuru = DataGuru::create($request->all());
+            $response = [
+                'message' => 'Data Created!',
+                'data' => $dataGuru
+            ];
+
+            return response()->json($response, Response::HTTP_CREATED);
+
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => "Failed " . $e->errorInfo 
+            ]);
+        }
     }
 
     /**
