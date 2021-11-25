@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DataGuru;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DataGuruController extends Controller
 {
@@ -13,17 +15,13 @@ class DataGuruController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $dataGuru = DataGuru::orderBy('name', 'ASC')->get();
+        $response = [
+            'message' => 'List DataGuru order by name',
+            'data' => $dataGuru
+        ];
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json($response, Response::HTTP_OK);
     }
 
     /**
@@ -44,17 +42,6 @@ class DataGuruController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }
