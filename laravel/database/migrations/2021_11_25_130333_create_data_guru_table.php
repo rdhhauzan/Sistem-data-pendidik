@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DataGuru extends Migration
+class CreateDataGuruTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class DataGuru extends Migration
      */
     public function up()
     {
-        Schema::create('guru', function (Blueprint $table) {
+       Schema::create('guru', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('nisn');
@@ -22,6 +22,7 @@ class DataGuru extends Migration
             $table->enum('status', ['PNS', 'Honorer']);
             $table->string('jabatan');
             $table->string('mapel');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +33,6 @@ class DataGuru extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('data_gurus');
     }
 }
