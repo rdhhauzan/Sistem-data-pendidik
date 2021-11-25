@@ -71,7 +71,14 @@ class DataGuruController extends Controller
      */
     public function show($id)
     {
-        //
+        $dataGuru = DataGuru::findOrFail($id);
+
+         $response = [
+                'message' => 'Detail Data by ID',
+                'data' => $dataGuru
+            ];
+
+            return response()->json($response, Response::HTTP_OK);
     }
 
     /**
@@ -83,7 +90,36 @@ class DataGuruController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataGuru = DataGuru::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required'],
+            'nisn' => ['required', 'numeric'],
+            'jeniskelamin' => ['required', 'in:L,P'],
+            'umur' => ['required', 'numeric'],
+            'status' => ['required', 'in:PNS,Honorer'],
+            'jabatan' => ['required'],
+            'mapel' => ['required']
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        try {
+            $dataGuru->update($request->all());
+            $response = [
+                'message' => 'Data Updated!',
+                'data' => $dataGuru
+            ];
+
+            return response()->json($response, Response::HTTP_OK);
+
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => "Failed " . $e->errorInfo 
+            ]);
+        }
     }
 
     /**
