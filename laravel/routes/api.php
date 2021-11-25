@@ -23,3 +23,4 @@ Route::get('/dataguru', [DataGuruController::class, 'index']);
 Route::post('/dataguru', [DataGuruController::class, 'store']);
 Route::get('/dataguru/{id}', [DataGuruController::class, 'show']);
 Route::put('/dataguru/{id}', [DataGuruController::class, 'update']);
+Route::delete('/dataguru/{id}', [DataGuruController::class, 'destroy']);

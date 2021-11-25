@@ -130,6 +130,20 @@ class DataGuruController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $dataGuru = DataGuru::findOrFail($id);
+
+        try {
+            $dataGuru->delete();
+            $response = [
+                'message' => 'Data Deleted!',
+            ];
+
+            return response()->json($response, Response::HTTP_OK);
+
+        } catch (QueryException $e) {
+            return response()->json([
+                'message' => "Failed " . $e->errorInfo 
+            ]);
+        }
     }
 }
