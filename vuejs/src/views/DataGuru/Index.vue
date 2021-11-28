@@ -24,17 +24,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(DataGuru, index) in DataGuru.data">
-                                <td>Saya</td>
-                                <td>1</td>
-                                <td>LK</td>
-                                <td>12</td>
-                                <td>PNS</td>
-                                <td>PPP</td>
-                                <td>OOOO</td>
+                            <tr v-for="(DataGuru, index) in DataGuru.data" :key="index">
+                                <td>{{ DataGuru.name }}</td>
+                                <td>{{ DataGuru.nisn }}</td>
+                                <td>{{ DataGuru.jeniskelamin }}</td>
+                                <td>{{ DataGuru.umur }}</td>
+                                <td>{{ DataGuru.status }}</td>
+                                <td>{{ DataGuru.jabatan }}</td>
+                                <td>{{ DataGuru.mapel }}</td>
                                 <td>
                                     <div class="btn-group">
-                                        <router-link :to="{ name: 'DataGuru.edit', params:{id: 1}}" class="btn btn-sm btn-outline-info">Edit</router-link>
+                                        <router-link :to="{ name: 'DataGuru.edit', params:{id: DataGuru.id}}" class="btn btn-sm btn-outline-info">Edit</router-link>
                                         <button class="btn btn-sm btn-outline-danger">Delete</button>
                                     </div>
                                 </td>
