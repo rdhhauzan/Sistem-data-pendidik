@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DataGuruController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *

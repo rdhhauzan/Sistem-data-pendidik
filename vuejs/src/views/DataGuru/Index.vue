@@ -27,7 +27,7 @@
                             <tr v-for="(DataGuru, index) in DataGuru.data" :key="index">
                                 <td>{{ DataGuru.name }}</td>
                                 <td>{{ DataGuru.nisn }}</td>
-                                <td>{{ DataGuru.jeniskelamin }}</td>
+                                <td>{{ DataGuru.jenisKelamin }}</td>
                                 <td>{{ DataGuru.umur }}</td>
                                 <td>{{ DataGuru.status }}</td>
                                 <td>{{ DataGuru.jabatan }}</td>
@@ -35,7 +35,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <router-link :to="{ name: 'DataGuru.edit', params:{id: DataGuru.id}}" class="btn btn-sm btn-outline-info">Edit</router-link>
-                                        <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                        <button class="btn btn-sm btn-outline-danger" @click.prevent="destroy(DataGuru.id, index)">Delete</button>
                                     </div>
                                 </td>
                             </tr>
@@ -65,8 +65,21 @@
                 });
             });
 
+            function destroy(id, index) {
+                axios.delete(
+                    `http://127.0.0.1:8000/api/dataguru/${id}`
+                )
+
+                .then(() => {
+                    DataGuru.value.data.splice(index, 1)
+                }).catch((err) => {
+                    console.log(err.response.data)
+                });
+            }
+
             return {
-                DataGuru
+                DataGuru,
+                destroy
             }
         }
     }
