@@ -1,13 +1,20 @@
-import { createApp } from 'vue'
-import router from './router'
+import {
+    createApp
+} from 'vue'
 import App from './App.vue'
+import router from './router'
+import store from './store'
+import authStore from './store/auth'
+import axios from 'axios'
 
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'bootstrap/dist/js/bootstrap.min'
+axios.defaults.withCredentials = true
+axios.defaults.baseURL = 'http://localhost:8000/'
 
+/* Bootstrap */
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.css'
 
-const app = createApp(App)
-
-
-app.use(router)
-app.mount('#app')
+authStore.dispatch('user')
+    .then(() => {
+        createApp(App).use(store).use(router).mount('#app')
+    })

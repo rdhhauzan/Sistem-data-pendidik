@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DataGuruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/dataguru', [DataGuruController::class, 'index']);
-Route::post('/dataguru', [DataGuruController::class, 'store']);
-Route::get('/dataguru/{id}', [DataGuruController::class, 'show']);
-Route::put('/dataguru/{id}', [DataGuruController::class, 'update']);
-Route::delete('/dataguru/{id}', [DataGuruController::class, 'destroy']);
+Route::get('/dataguru', [App\Http\Controllers\DataGuruController::class, 'index']);
+Route::post('/dataguru', [App\Http\Controllers\DataGuruController::class, 'store']);
+Route::get('/dataguru/{id}', [App\Http\Controllers\DataGuruController::class, 'show']);
+Route::put('/dataguru/{id}', [App\Http\Controllers\DataGuruController::class, 'update']);
+Route::delete('/dataguru/{id}', [App\Http\Controllers\DataGuruController::class, 'destroy']);

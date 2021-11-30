@@ -57,7 +57,7 @@
 
             onMounted(() => {
                 // get data from api endpoint
-                axios.get('http://127.0.0.1:8000/api/dataguru')
+                axios.get('/api/dataguru')
                 .then((result) => {
                     DataGuru.value = result.data
                 }).catch((err) => {
@@ -67,7 +67,7 @@
 
             function destroy(id, index) {
                 axios.delete(
-                    `http://127.0.0.1:8000/api/dataguru/${id}`
+                    `/api/dataguru/${id}`
                 )
 
                 .then(() => {

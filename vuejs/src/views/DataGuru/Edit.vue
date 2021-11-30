@@ -98,7 +98,7 @@
             const route = useRoute();
 
             onMounted(() => {
-                axios.get(`http://127.0.0.1:8000/api/dataguru/${route.params.id}`)
+                axios.get(`/api/dataguru/${route.params.id}`)
 
                 .then((result) => {
                     DataGuru.name = result.data.data.name
@@ -115,7 +115,7 @@
 
             function update() {
                 axios.put(
-                    `http://127.0.0.1:8000/api/dataguru/${route.params.id}`,
+                    `/api/dataguru/${route.params.id}`,
                     DataGuru
                 )
 
