@@ -56,7 +56,7 @@
 
 ## Notes
 
-    ### Make sure you run the laravel with 8000 port, and Vue JS on 8080 Port
-    ### You Need you run the laravel and vue js server at the same time for run the project
+    Make sure you run the laravel with 8000 port, and Vue JS on 8080 Port
+    You Need you run the laravel and vue js server at the same time for run the project
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
