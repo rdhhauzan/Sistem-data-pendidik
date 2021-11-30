@@ -1,4 +1,4 @@
-# Vue JS
+# CRUD With Laravel, Vue JS, Rest API, Laravel Sanctum
 
 ## Built With
 
@@ -46,7 +46,7 @@
    ```sh
    php artisan serve
    ```
-2. Move Vue JS directory and run the server
+2. Move to Vue JS directory and run the server
    ```sh
    cd vuejs
    ```
@@ -57,6 +57,6 @@
 ## Notes
 
 - Make sure you run the laravel with 8000 port, and Vue JS on 8080 Port
-- You Need you run the laravel and vue js server at the same time for run the project
+- You Need to run the laravel and vue js server at the same time for run the project
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
